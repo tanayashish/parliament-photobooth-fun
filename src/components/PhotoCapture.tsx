@@ -134,20 +134,19 @@ const PhotoCapture = ({ onPhotosComplete, onCancel }: PhotoCaptureProps) => {
             <div className="absolute bottom-1 right-1 w-6 h-6 border-b-2 border-r-2 border-primary/60" />
           </div>
 
-          {preview ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            playsInline
+            muted
+            className="w-full aspect-[4/3] object-cover"
+            style={{ transform: "scaleX(-1)", display: preview ? "none" : "block" }}
+          />
+          {preview && (
             <img
               src={preview}
               alt="Preview"
               className="w-full aspect-[4/3] object-cover"
-            />
-          ) : (
-            <video
-              ref={videoRef}
-              autoPlay
-              playsInline
-              muted
-              className="w-full aspect-[4/3] object-cover mirror"
-              style={{ transform: "scaleX(-1)" }}
             />
           )}
 
